@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP InstaCRON
+Plugin Name: InstaCRON
 Plugin URI:
 Description: Run cron tasks whenever you want to!
 Version: 2014.10.28
@@ -12,7 +12,7 @@ class InstaCRON
 {
 	static function add_job($slug, $function, $params = null)
 	{
-		add_filter('custom_cron_jobs', function($jobs) use ($slug, $function, $params)
+		add_filter('instacron_jobs', function($jobs) use ($slug, $function, $params)
 		{
 			$jobs[$slug] = array($function, $params);
 			return $jobs;
@@ -24,13 +24,15 @@ class InstaCRON
 		/* Hook just before outputting anything */
 		add_action('template_redirect', function()
 		{
-			if(($cron_name = trim(get_query_var('custom_cron'))) !== '')
+			if(($cron_name = trim(get_query_var(apply_filters('instacron_parameter', 'custom_cron')))) !== '')
 			{
-				$jobs = apply_filters('custom_cron_jobs', array());
+				//Grab jobs from filter
+				$jobs = apply_filters('instacron_jobs', array());
 
-				//Specific job pointed out, run it
+				//If specific job pointed out, run it
 				if(isset($jobs[$cron_name]))
 				{
+					//Run attached function and pass parameters
 					$jobs[$cron_name][0]($jobs[$cron_name][1]);
 				}
 				else if($cron_name === 'all')//Else run all jobs
@@ -38,6 +40,7 @@ class InstaCRON
 					//Loop over jobs and execute 'em
 					foreach($jobs as $name => $job_params_array)
 					{
+						//Run attached function and pass parameters
 						$job_params_array[0]($job_params_array[1]);
 					}
 				}
@@ -53,7 +56,7 @@ class InstaCRON
 
 		add_filter('query_vars', function($vars)
 		{
-			$vars[] = 'custom_cron';
+			$vars[] = apply_filters('instacron_parameter', 'custom_cron');
 			return $vars;
 		});
 	}
