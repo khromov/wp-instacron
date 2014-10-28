@@ -6,9 +6,9 @@ You register your jobs anywhere you'd like in your code (as long as it's after t
 
 Please note: You will need a real CRON scheduler to use this plugin. We're planning on providing "fake" CRON using [TLC Transients](https://github.com/markjaquith/WP-TLC-Transients) in the future.
 
-## Create a cron task
+## Create a job
 
-Creating a CRON task can be done in just a few lines of code
+Creating a CRON job can be done in just a few lines of code
 
 ### Example
 
@@ -29,7 +29,7 @@ InstaCRON::add_job('my_custom_job_with_parameter', function($params)
 
 ### Running CRON jobs
 
-To actually run the CRON you need to schedule a task that grabs the special InstaCRON URL as often as you'd like, which then
+To actually run the CRON you need to schedule a job that grabs the special InstaCRON URL as often as you'd like, which then
 immediately runs the code you provided. Use the custom_cron GET variable and set it to the $slug you provided in add_job()
 
 #### Example URL
