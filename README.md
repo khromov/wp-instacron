@@ -2,13 +2,13 @@
 
 InstaCRON is a WordPress plugin that lets you quickly setup tasks (or "jobs") that execute when you want them to by visiting a special URL.
 
-You register your jobs anywhere you'd like in your code (as long as it's after the plugins_loaded hook). See examples below.
+You register your jobs anywhere you'd like in your code (as long as it's on or after the plugins_loaded hook). See examples below.
 
 Please note: You will need a real CRON scheduler to use this plugin. We're planning on providing "fake" CRON using [TLC Transients](https://github.com/markjaquith/WP-TLC-Transients) in the future.
 
 ## Create a job
 
-Creating a CRON job can be done in just a few lines of code
+Creating a CRON job can be done in just a few lines of code:
 
 ### Example
 
@@ -23,7 +23,7 @@ InstaCRON::add_job('my_custom_job', function() {
 ```php
 InstaCRON::add_job('my_custom_job_with_parameter', function($params)
 {
-    echo "Hello, " . $params['name']; //Please don't actually echo stuff in CRON jobs! :-)
+    echo "Hello, " . $params['name']; //Please don't actually echo stuff in your CRON jobs! :-)
 }, array('name' => 'Timmy'));
 ```
 
