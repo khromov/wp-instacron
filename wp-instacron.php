@@ -3,7 +3,7 @@
 Plugin Name: InstaCRON
 Plugin URI:
 Description: Run cron tasks whenever you want to!
-Version: 2014.10.28
+Version: 1.0
 Author: khromov
 Author URI: http://snippets.khromov.se
 GitHub Plugin URI: khromov/wp-instacron
