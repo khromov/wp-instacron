@@ -6,7 +6,8 @@ Description: Run cron tasks whenever you want to!
 Version: 2014.10.28
 Author: khromov
 Author URI: http://snippets.khromov.se
-GitHub Plugin URI: khromov/wp-instacron
+GitHub Plugin URI: https://github.com/khromov/wp-instacron
+GitHub Branch:     master
 */
 
 class InstaCRON
