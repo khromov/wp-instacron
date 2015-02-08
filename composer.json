@@ -1,7 +1,10 @@
 {
   "name": "khromov/wp-instacron",
-  "description": "",
+  "description": "Quickly setup tasks that execute when you want them to",
   "keywords": ["wordpress", "plugin"],
-  "license": "proprietary",
-  "type": "wordpress-plugin"
+  "license": "GPL",
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "~1.0.0"
+  }
 }
